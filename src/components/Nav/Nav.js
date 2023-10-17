@@ -1,9 +1,28 @@
 import "./nav.css";
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react"; 
+import { auth } from "../../config/firebase"; 
 
-const withouSidebarRoutes = ["/login"];
+
 export default function Menu() {
-  const {pathname} = useLocation();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+   const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        // User is logged in
+        setUser(authUser);
+      } else {
+        // User is logged out
+        setUser(null);
+      }
+    });
+
+    return () => {
+      // Cleanup the listener when component unmounts
+      unsubscribe();
+    };
+  }, []);
+
   return (
     <>
       <nav className="menum navbar navbar-light navbar-expand-md justify-content-center fixed-top">
@@ -24,23 +43,34 @@ export default function Menu() {
                 </a>
               </li>
               <li className="nav-item">
-                {" "}
                 <a className="nav-link" href="contact">
                   Contact
                 </a>
               </li>
-              
               <li className="nav-item">
-                {" "}
                 <a className="nav-link" href="tc">
                   T & C
                 </a>
               </li>
               <li className="nav-item">
-                {" "}
-                <a className="nav-link" href="login">
-                  Login
-                </a>
+                {user ? (
+                  // Display Logout when the user is logged in
+                  <a
+                    className="nav-link"
+                    href="/login"
+                    onClick={() => {
+                      // Sign out the user when clicking Logout
+                      auth.signOut();
+                    }}
+                  >
+                    Logout
+                  </a>
+                ) : (
+                  // Display Login when the user is logged out
+                  <a className="nav-link" href="login">
+                    Login
+                  </a>
+                )}
               </li>
             </ul>
           </div>
@@ -49,3 +79,4 @@ export default function Menu() {
     </>
   );
 }
+

@@ -103,18 +103,7 @@ function Login() {
                   id="password"
                 />
               </div>
-              <div className="form-group">
-                <label htmlFor="password">jhsgdwhefndwebPassword</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="Password"
-                  value={password}
-                  name="password"
-                  onChange={handleChange}
-                  id="password"
-                />
-              </div>
+             
               {isSignup && (
                 <>
                   <div className="form-group">
@@ -174,15 +163,7 @@ function Login() {
       </div>
     </div>
 
-    //  <div>
-    //     <div className="sidenav">
-    //       <div className="login-main-text">
-    //         <h2>{isSignup ? "SignUp" : "Login"}</h2>
-    //         <p>Login or register from here to access.</p>
-    //       </div>
-    //     </div>
 
-    //   </div>
   );
 }
 
