@@ -103,6 +103,18 @@ function Login() {
                   id="password"
                 />
               </div>
+              <div className="form-group">
+                <label htmlFor="password">jhsgdwhefndwebPassword</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  placeholder="Password"
+                  value={password}
+                  name="password"
+                  onChange={handleChange}
+                  id="password"
+                />
+              </div>
               {isSignup && (
                 <>
                   <div className="form-group">
