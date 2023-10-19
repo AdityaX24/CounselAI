@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { signin, signUp, signInWithGoogle } from "../config/Auth";
-import "./login.css";
+import "./css/login.css";
 import { toast, Toaster } from "react-hot-toast";
 import sample from "../images/loginvid.mp4";
 
@@ -53,6 +53,7 @@ function Login() {
   };
 
   return (
+    <>
     <div>
       <div className="split left">
         <div className="centered">
@@ -162,7 +163,7 @@ function Login() {
         </div>
       </div>
     </div>
-
+    </>
 
   );
 }

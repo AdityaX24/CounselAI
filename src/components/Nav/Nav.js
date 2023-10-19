@@ -18,7 +18,7 @@ export default function Menu() {
     });
 
     return () => {
-      // Cleanup the listener when component unmounts
+      // Cleanup the listener when component unmounts 
       unsubscribe();
     };
   }, []);
